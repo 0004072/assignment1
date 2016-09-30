@@ -11,7 +11,7 @@ public class question1 {
     private static BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        int arr[] = builder();
+        double arr[] = builder();
         arr = bubbleSort(arr);
 
         System.out.print("Choose your orientation to display the items(H=horizontal V=Vertical):");
@@ -19,7 +19,7 @@ public class question1 {
         String or = buf.readLine();
         if (!or.matches("^[hHvV]$"))
             System.out.println("Invalid orientation! Using default...");
-        for (int i : arr) {
+        for (double i : arr) {
             switch (or) {
                 case "h":
                 case "H":
@@ -45,7 +45,7 @@ public class question1 {
      * @return returns the sorted array.
      * @throws IOException in an occurrence of a problem in I/O
      */
-    private static int[] bubbleSort(int arr[]) throws IOException {
+    private static double[] bubbleSort(double arr[]) throws IOException {
         boolean desc = false;
         System.out.print("Select the sort order(A=Ascending/D=Descending):");
         System.out.flush();
@@ -61,14 +61,14 @@ public class question1 {
                 if (!desc) {
                     if (arr[i] > arr[i + 1]) {
                         swapped = true;
-                        int tmp = arr[i];
+                        double tmp = arr[i];
                         arr[i] = arr[i + 1];
                         arr[i + 1] = tmp;
                     }
                 } else {
                     if (arr[i] < arr[i + 1]) {
                         swapped = true;
-                        int tmp = arr[i];
+                        double tmp = arr[i];
                         arr[i] = arr[i + 1];
                         arr[i + 1] = tmp;
                     }
@@ -87,15 +87,15 @@ public class question1 {
      * @return the array of integer values that needs to be sorted.
      * @throws IOException when there is a problem occurred in the I/O.
      */
-    private static int[] builder() throws IOException {
+    private static double[] builder() throws IOException {
         StringBuffer input = new StringBuffer();
-
+        System.out.println("Insert the numbers you need sorted. You may either add one by one or a series of values which are comma separated (i.e 5,4,3). SHOULD stick to this format if you are giving a series of comma separated values.");
         cont_add:
         while (true) {
-            System.out.print("Insert the numbers you need sorted, one at a time:");
+            System.out.print("values? >");
             System.out.flush();
             String num = buf.readLine();
-            if (!num.matches("^[+-]?\\d+$"))
+            if (!num.matches("^([+-]?\\d+(\\.\\d+)?[,]?)+([+-]?\\d+(\\.\\d+)?)?$"))
                 System.out.println("Invalid number detected!");
 
             else
@@ -120,9 +120,9 @@ public class question1 {
         }
 
         String[] arr = input.toString().split(",");
-        int toSort[] = new int[arr.length];
+        double toSort[] = new double[arr.length];
         for (int i = 0; i < arr.length; i++)
-            toSort[i] = Integer.parseInt(arr[i]);
+            toSort[i] = Double.parseDouble(arr[i]);
 
         return toSort;
     }

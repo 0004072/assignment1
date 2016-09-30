@@ -1,7 +1,5 @@
 package com.hsenid.assignment1;
 
-import com.sun.javafx.binding.StringFormatter;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
